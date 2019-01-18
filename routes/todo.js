@@ -3,16 +3,17 @@
 // パッケージの読み込み
 const express = require('express');
 const router = express.Router();
-const debugRouter = require('debug')('app:router');
 const debugMongo = require('debug')('app:mongodb');
+
+// モジュールの読み込み
+const authenticationEnsurer = require('./authentication-ensurer');
 
 // モデルを読み込み
 const Todos = require('../models/todos');
 
 /* todoを取得するWebAPI */
-router.get('/', (req, res, next)=>{
+router.get('/', authenticationEnsurer, (req, res, next)=>{
   const userId = req.user.id;
-  debugRouter(userId);
   if(!userId){
     res.end();
     return;
@@ -39,10 +40,9 @@ router.get('/', (req, res, next)=>{
 })
 
 /* todoを追加するWebAPI */
-router.put('/', (req, res, next)=>{
+router.put('/', authenticationEnsurer, (req, res, next)=>{
   const title = req.body.title;
   const description = req.body.description;
-  debugMongo(description);
   const userId = req.user.id;
   Todos.create({
     title: title,
@@ -56,15 +56,13 @@ router.put('/', (req, res, next)=>{
     if(err){
       debugMongo(err);
     }
-    debugMongo('Add todo');
     res.end();
   });
 });
 
 /* todoを完了にするWebAPI */
-router.post('/done', (req, res, next)=>{
+router.post('/done', authenticationEnsurer, (req, res, next)=>{
   const id = req.body.id;
-  debugMongo(id);
   Todos.updateOne({_id:id}, {$set:{done: true, completed_at: new Date()}}, (err, raw)=>{
     if(err){
       debugMongo('error', err);
@@ -76,7 +74,7 @@ router.post('/done', (req, res, next)=>{
 })
 
 /* todoを未完了にするWebAPI */
-router.post('/undone', (req, res, next)=>{
+router.post('/undone', authenticationEnsurer, (req, res, next)=>{
   const id = req.body.id;
   Todos.updateOne({_id:id}, {$set:{done: false, completed_at: null}}, (err, raw)=>{
     if(err){
@@ -89,7 +87,7 @@ router.post('/undone', (req, res, next)=>{
 })
 
 /* todoを削除するWebAPI */
-router.post('/delete', (req, res, next)=>{
+router.post('/delete', authenticationEnsurer, (req, res, next)=>{
   const id = req.body.id;
   Todos.updateOne({_id:id}, {$set:{deleted_at: new Date()}}, (err, raw)=>{
     if(err){
@@ -102,7 +100,7 @@ router.post('/delete', (req, res, next)=>{
 })
 
 /* todoを編集するWebAPI */
-router.post('/edit', (req, res, next)=>{
+router.post('/edit', authenticationEnsurer, (req, res, next)=>{
   const id = req.body.id;
   const title = req.body.title;
   const description = req.body.description;
