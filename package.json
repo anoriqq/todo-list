@@ -1,0 +1,48 @@
+{
+  "name": "vue-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "DEBUG=express:*,app:* node index.js",
+    "server": "webpack-dev-server --hot",
+    "build": "browserify -t vueify -e public/js/main.js -o public/js/bundle.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "helmet": "^3.15.0",
+    "http-errors": "^1.7.1",
+    "moment": "^2.23.0",
+    "mongoose": "^5.4.4",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11",
+    "pug": "^2.0.3",
+    "vue": "^2.5.22"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
+    "dotenv": "^6.2.0",
+    "pug-plain-loader": "^1.0.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.22",
+    "vueify": "^9.4.1",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+li{
+  list-style: none;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+.tabs label {
+  /* float: left; */
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: .3s;
+  text-align: center;
+}
+.tabs input{
+  display: none;
+}
+.tabs li.active,
+.tabs :checked + label {
+  background-color: rgb(171, 230, 245);
+  border-color: rgb(171, 230, 245);
+  color: #fff;
+  cursor: auto;
+}
+p, label{
+  padding: 0;
+  margin: 0;
+}
+.description{
+  color: #aaa;
+  font-size: 14px;
+}
+.date{
+  color: #555;
+  font-size: 15px;
+}
