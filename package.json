@@ -25,20 +25,20 @@
     "vue": "^2.5.22"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "axios": "^0.18.1",
-    "babel-loader": "^8.0.5",
-    "babel-preset-env": "^1.7.0",
-    "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^2.1.0",
-    "pug-plain-loader": "^1.0.0",
-    "style-loader": "^0.23.1",
-    "vue-loader": "^15.5.1",
-    "vue-template-compiler": "^2.5.22",
-    "vueify": "^9.4.1",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "@babel/core": "7.2.2",
+    "axios": "0.18.1",
+    "babel-loader": "8.0.5",
+    "babel-preset-env": "1.7.0",
+    "copy-webpack-plugin": "4.6.0",
+    "css-loader": "2.1.0",
+    "pug-plain-loader": "1.0.0",
+    "style-loader": "0.23.1",
+    "vue-loader": "15.5.1",
+    "vue-template-compiler": "2.5.22",
+    "vueify": "9.4.1",
+    "webpack": "4.28.4",
+    "webpack-cli": "3.2.1",
+    "webpack-dev-server": "3.1.14"
   },
   "babel": {
     "presets": [
